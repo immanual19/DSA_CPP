@@ -2,11 +2,21 @@
 using namespace std;
 typedef long long int lld;
 
+/*
+ 1. Choose pivot randomly.
+ 2. Shuffle the vector randomly.
+ */
+
+/*
+ Worst Case O(n^2)
+ Average Case O(nlog n)
+ */
+
 vector<int> quick_sort(vector<int>&a){
     if(a.size()<=1){
         return a;
     }
-    int pivot=a.size()-1;
+    int pivot=rand()%(a.size());
     
     vector<int>b,c;
     

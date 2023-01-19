@@ -142,6 +142,36 @@ public:
         delete b;
     }
     
+    
+    void InsertAfterValue(int value,int data){
+        Node* a=head;
+        while(a!=NULL){
+            if(a->data==value){
+                break;
+            }
+            a=a->next;
+        }
+        if(a==NULL){
+            cout<<value<<" does not exist in the linked list."<<endl;
+            return;
+        }
+        sz++;
+        Node* newnode=CreateNewNode(data);
+        newnode->next=a->next;
+        a->next=newnode;
+        
+    }
+    void ReversePrint(Node *a){
+        if(a==NULL){
+            return;
+        }
+        ReversePrint(a->next);
+        cout<<a->data<<" ";
+    }
+    void RevPrint(){
+        ReversePrint(head);
+        cout<<endl;
+    }
 };
 
 int main(){
@@ -168,13 +198,19 @@ int main(){
     cout<<"5 is found at index "<<l.SearchDistinctValue(5)<<endl;
     l.SearchAllValue(30);
     cout<<l.GetSize()<<endl;
-    l.InsertAtAnyIndex(1, 100);
+    l.InsertAtAnyIndex(1, 900);
     l.Traverse();
     cout<<l.GetSize()<<endl;
     l.DeleteAtHead();
     l.Traverse();
     cout<<l.GetSize()<<endl;
     l.DeleteAnyIndex(2);
+    cout<<l.GetSize()<<endl;
+    l.Traverse();
+    l.InsertAfterValue(10, 10000);
+    l.Traverse();
+    cout<<l.GetSize()<<endl;
+    l.RevPrint();
     l.Traverse();
     return 0;
 }
